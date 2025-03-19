@@ -71,6 +71,19 @@ main {
   justify-content: space-between;
 }
 
+#link-container {
+  width: 100%;
+  margin-top: 20px;
+  color: white;
+}
+
+#link-container a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 20px;
+}
+
 .content {
   display: flex;
   flex-direction: column;
@@ -184,7 +197,7 @@ footer {
   }
 }
 
-#displayContent img{
+#displayContent img {
   height: 300px;
   width: 500px;
   border: solid white;
