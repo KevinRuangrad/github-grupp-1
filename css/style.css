@@ -296,13 +296,13 @@ footer {
   z-index: -1;
 }
 
-.mission-item {
+#pic1 {
   background-image: url("../images/del1.jpg"); /* Första sektionen */
 }
-.mission-item {
+#pic2 {
   background-image: url("../images/del2.jpg"); /* Andra sektionen */
 }
-.mission-item {
+#pic3 {
   background-image: url("../images/del3.jpg"); /* Tredje sektionen */
 }
 
