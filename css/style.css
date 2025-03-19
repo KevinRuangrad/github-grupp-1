@@ -254,10 +254,73 @@ footer {
   text-transform: uppercase;
   text-shadow: 0 0 20px rgba(255, 255, 255, 1),
     0 0 40px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.6);
-    0 0 40px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.6);
 }
 .about-description {
   font-size: 1.2rem;
   max-width: 800px;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.mission-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Mellanrum mellan sektionerna */
+  padding: 40px;
+}
+
+.mission-item {
+  flex: 1; /* Lika stora sektioner */
+  height: 300px; /* Höjden på varje sektion */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.mission-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(50%); /* Gör bakgrunden lite mörkare */
+  z-index: -1;
+}
+
+.mission-item {
+  background-image: url("../images/del1.jpg"); /* Första sektionen */
+}
+.mission-item {
+  background-image: url("../images/del2.jpg"); /* Andra sektionen */
+}
+.mission-item {
+  background-image: url("../images/del3.jpg"); /* Tredje sektionen */
+}
+
+.mission-content {
+  position: relative;
+  z-index: 1;
+}
+
+.mission-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 1);
+}
+
+.mission-text {
+  font-size: 1rem;
+  max-width: 80%;
+  margin: auto;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
 }
