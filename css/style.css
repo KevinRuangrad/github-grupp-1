@@ -327,13 +327,13 @@ footer {
   z-index: -1;
 }
 
-.mission-item:nth-child(1)::before {
+.mission-item {
   background-image: url('../images/del1.jpg'); /* Första sektionen */
 }
-.mission-item:nth-child(2)::before {
+.mission-item {
   background-image: url('../images/del2.jpg'); /* Andra sektionen */
 }
-.mission-item:nth-child(3)::before {
+.mission-item {
   background-image: url('../images/del3.jpg'); /* Tredje sektionen */
 }
 
@@ -343,7 +343,7 @@ footer {
 }
 
 .mission-title {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   text-transform: uppercase;
   text-shadow: 0 0 10px rgba(255, 255, 255, 1);
