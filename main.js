@@ -2,13 +2,28 @@ const API_KEY = "iKbRioFV3EYa1DJzIrKhPIDLL7SmPSXmMEierTgK";
 const APOD_API_URL = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`;
 const MARS_API_URL = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?api_key=${API_KEY}`;
 
+async function fetchWithRetry(url, retries = 3, delay = 1000) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return await response.json();
+    } catch (error) {
+      if (i < retries - 1) {
+        console.warn(`Retrying... (${i + 1})`);
+        await new Promise((resolve) => setTimeout(resolve, delay));
+      } else {
+        throw error;
+      }
+    }
+  }
+}
+
 async function fetchNasaData() {
   try {
-    const response = await fetch(APOD_API_URL);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const data = await response.json();
+    const data = await fetchWithRetry(APOD_API_URL);
     displayAPODData(data);
   } catch (error) {
     console.error("Error fetching data from NASA API:", error);
@@ -33,17 +48,14 @@ function displayAPODData(data) {
   apodContainer.appendChild(description);
 }
 
-async function fetchMarsData(date, camera) {
+async function fetchMarsData(camera) {
   try {
-    let url = `${MARS_API_URL}&earth_date=${date}`;
+    const today = new Date().toISOString().split("T")[0];
+    let url = `${MARS_API_URL}&earth_date=${today}`;
     if (camera) {
       url += `&camera=${camera}`;
     }
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const data = await response.json();
+    const data = await fetchWithRetry(url);
     displayMarsData(data.photos);
   } catch (error) {
     console.error("Error fetching data from NASA API:", error);
@@ -61,25 +73,21 @@ function displayMarsData(photos) {
     return;
   }
 
-  const photo = photos[0]; // Display only the first photo
-  const img = document.createElement("img");
-  img.src = photo.img_src;
-  img.alt = `Mars Rover Photo taken by ${photo.rover.name} on ${photo.earth_date}`;
-  marsContainer.appendChild(img);
+  photos.slice(0, 3).forEach((photo) => {
+    const img = document.createElement("img");
+    img.src = photo.img_src;
+    img.alt = `Mars Rover Photo taken by ${photo.rover.name} on ${photo.earth_date}`;
+    marsContainer.appendChild(img);
+  });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   // Fetch and display the APOD when the page loads
   fetchNasaData();
 
-  // Add event listener for fetching Mars Rover Photos based on date and camera
+  // Add event listener for fetching Mars Rover Photos based on camera
   document.getElementById("fetchPhotoButton").addEventListener("click", () => {
-    const date = document.getElementById("dateInput").value;
     const camera = document.getElementById("cameraSelect").value;
-    if (date) {
-      fetchMarsData(date, camera);
-    } else {
-      alert("Please select a date.");
-    }
+    fetchMarsData(camera);
   });
 });
