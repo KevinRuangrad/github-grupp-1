@@ -8,14 +8,14 @@ async function fetchNasaData() {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
-    displayNasaData(data);
+    displayAPODData(data); // Corrected function call
   } catch (error) {
     console.error("Error fetching data from NASA API:", error);
   }
 }
 
-function displayNasaData(data) {
-  const apodContainer = document.getElementById("apod-container");
+function displayAPODData(data) {
+  const apodContainer = document.querySelector("#displayContent");
 
   const title = document.createElement("h1");
   title.textContent = data.title;
@@ -31,3 +31,5 @@ function displayNasaData(data) {
   apodContainer.appendChild(image);
   apodContainer.appendChild(description);
 }
+
+document.addEventListener("DOMContentLoaded", fetchNasaData);
