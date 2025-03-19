@@ -53,7 +53,7 @@ async function fetchMarsData(camera) {
     const today = new Date().toISOString().split("T")[0];
     let url = `${MARS_API_URL}&earth_date=${today}`;
     if (camera) {
-      url += `&camera=${camera}`;
+      url += `&camera=${camera}`;   
     }
     const data = await fetchWithRetry(url);
     displayMarsData(data.photos);
