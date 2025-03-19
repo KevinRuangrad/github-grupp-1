@@ -73,12 +73,12 @@ main {
 
 #link-container {
   width: 100%;
-  margin-top: 20px;
-  color: white;
+  margin-top: 50px;
+  color: rgb(128, 162, 255);
 }
 
 #link-container a {
-  color: white;
+  color: rgb(186, 203, 249);
   text-decoration: none;
   margin: 0 10px;
   font-size: 20px;
@@ -167,7 +167,7 @@ main {
 .content h2 {
   margin: 10px 30px;
   font-size: 20px;
-  color: white;
+  color: rgb(211, 221, 249);
 }
 
 footer {
@@ -190,7 +190,7 @@ footer {
     display: none;
   }
   .content h2 {
-    font-size: 20px;
+    font-size: 30px;
   }
   header h1 {
     font-size: 25px;
