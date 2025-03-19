@@ -199,3 +199,20 @@ footer {
   text-wrap: balance;
   font-size: 20px;
 }
+
+
+#marsContent img{
+  height: 300px;
+  width: 500px;
+  border: solid white;
+}
+
+#marsContent h1 {
+  color: white;
+}
+
+#marsContent p {
+  color: white;
+  text-wrap: balance;
+  font-size: 20px;
+}

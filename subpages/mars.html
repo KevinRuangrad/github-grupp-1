@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home - NASA API</title>
+    <title>Mars Rover Photos</title>
     <link rel="stylesheet" href="../css/style.css" />
     <script src="../main.js" type="module"></script>
   </head>
@@ -40,8 +40,23 @@
     <main>
       <div id="main-container">
         <section class="content">
-          <h2>Welcome to the NASA API Website</h2>
+          <h2>Mars Rover Photos</h2>
+          <input type="date" id="dateInput" />
+          <select id="cameraSelect">
+            <option value="">Select Camera</option>
+            <option value="FHAZ">Front Hazard Avoidance Camera</option>
+            <option value="RHAZ">Rear Hazard Avoidance Camera</option>
+            <option value="MAST">Mast Camera</option>
+            <option value="CHEMCAM">Chemistry and Camera Complex</option>
+            <option value="MAHLI">Mars Hand Lens Imager</option>
+            <option value="MARDI">Mars Descent Imager</option>
+            <option value="NAVCAM">Navigation Camera</option>
+          </select>
+          <button id="fetchPhotoButton">Fetch Photo</button>
         </section>
+      </div>
+      <div id="marsContent">
+        <!--- Mars Rover Photos will be displayed here -->
       </div>
     </main>
     <footer>
