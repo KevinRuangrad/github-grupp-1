@@ -234,6 +234,8 @@ footer {
 .about-container {
   background: url("../images/Blue\ and\ Black\ Neon\ Bold\ Gradient\ Modern\ Galaxy\ Playful\ Illustrative\ Universe\ Project\ Presentation\ \(1\).jpg")
     no-repeat center center; /* Lägg in rätt bildnamn */
+  background: url("../images/Blue\ and\ Black\ Neon\ Bold\ Gradient\ Modern\ Galaxy\ Playful\ Illustrative\ Universe\ Project\ Presentation\ \(1\).jpg")
+    no-repeat center center; /* Lägg in rätt bildnamn */
   background-size: cover; /* Ser till att bilden fyller hela sektionen */
   height: 100vh; /* Justera beroende på hur stor sektionen ska vara */
   display: flex;
@@ -246,10 +248,12 @@ footer {
 }
 .about-text {
   font-family: "Arial", sans-serif; /* Du kan testa 'Montserrat' eller 'Poppins' också */
+  font-family: "Arial", sans-serif; /* Du kan testa 'Montserrat' eller 'Poppins' också */
   font-size: 4rem;
   font-weight: bold;
   text-transform: uppercase;
   text-shadow: 0 0 20px rgba(255, 255, 255, 1),
+    0 0 40px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.6);
     0 0 40px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.6);
 }
 .about-description {
