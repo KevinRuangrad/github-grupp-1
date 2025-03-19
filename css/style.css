@@ -184,6 +184,18 @@ footer {
   }
 }
 
-.displayContent {
-  
+#displayContent img{
+  height: 300px;
+  width: 500px;
+  border: solid white;
+}
+
+#displayContent h1 {
+  color: white;
+}
+
+#displayContent p {
+  color: white;
+  text-wrap: balance;
+  font-size: 20px;
 }
