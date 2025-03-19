@@ -1,8 +1,10 @@
 * {
   box-sizing: border-box;
+  padding: 0 0;
 }
 
-body {
+body {  
+  margin: 0px;
   height: 100vh;
   background-color: rgb(0, 37, 122);
   display: flex;
