@@ -96,6 +96,13 @@ main {
   text-align: center;
 }
 
+#homepage-image-container {
+  display: flex;
+  justify-content: center;
+  height: 300px;
+  width: 500px;
+}
+
 .hamburger-menu {
   display: block;
 }
