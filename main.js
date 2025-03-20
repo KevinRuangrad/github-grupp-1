@@ -56,13 +56,13 @@ async function fetchMarsData(camera) {
       url += `&camera=${camera}`;   
     }
     const data = await fetchWithRetry(url);
-    displayMarsData(data.photos);
+    displayMarsData(data.photos, fetchRandomPhotos);
   } catch (error) {
     console.error("Error fetching data from NASA API:", error);
   }
 }
 
-function displayMarsData(photos) {
+function displayMarsData(photos, fetchRandomPhotos) {
   const marsContainer = document.querySelector("#marsContent");
   marsContainer.innerHTML = ""; // Clear previous content
 
@@ -70,6 +70,9 @@ function displayMarsData(photos) {
     const noPhotosMessage = document.createElement("p");
     noPhotosMessage.textContent = "No photos available for this date.";
     marsContainer.appendChild(noPhotosMessage);
+
+    // Fetch random photos if no photos available for the selected date
+    fetchRandomPhotos();
     return;
   }
 
@@ -79,6 +82,32 @@ function displayMarsData(photos) {
     img.alt = `Mars Rover Photo taken by ${photo.rover.name} on ${photo.earth_date}`;
     marsContainer.appendChild(img);
   });
+}
+
+// Example usage of displayMarsData with a fallback function
+function fetchRandomPhotos() {
+  // Logic to fetch photos from random dates
+  const randomDate = getRandomDate();
+  console.log(`Fetching random photos for date: ${randomDate}`);
+  fetchMarsPhotos(randomDate).then((randomPhotos) => {
+    displayMarsData(randomPhotos, fetchRandomPhotos);
+  });
+}
+
+function getRandomDate() {
+  const start = new Date(2012, 7, 6); // Curiosity rover landing date
+  const end = new Date();
+  const randomDate = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+  return randomDate.toISOString().split('T')[0];
+}
+
+function fetchMarsPhotos(date) {
+  const apiKey = 'DEMO_KEY'; // Replace with your NASA API key
+  const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${date}&api_key=${apiKey}`;
+  console.log(`Fetching Mars photos for date: ${date}`);
+  return fetch(url)
+    .then(response => response.json())
+    .then(data => data.photos);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -91,3 +120,16 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchMarsData(camera);
   });
 });
+
+document.querySelector("#fetchPhotoButton").addEventListener("click", () => {
+  console.log("Fetch Photo Button clicked");
+  fetchMarsPhotosForSelectedDate();
+});
+
+function fetchMarsPhotosForSelectedDate() {
+  const selectedDate = document.querySelector("#dateInput").value;
+  console.log(`Fetching Mars photos for selected date: ${selectedDate}`);
+  fetchMarsPhotos(selectedDate).then((photos) => {
+    displayMarsData(photos, fetchRandomPhotos);
+  });
+}
