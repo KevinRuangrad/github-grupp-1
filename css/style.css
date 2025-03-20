@@ -233,11 +233,11 @@ footer p {
 }
 
 #displayContent h1 {
-  color: white;
+  color: rgb(186, 203, 249);
 }
 
 #displayContent p {
-  color: white;
+  color: rgb(128, 162, 255);
   text-wrap: balance;
   font-size: 20px;
 }
