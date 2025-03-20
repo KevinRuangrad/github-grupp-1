@@ -3,7 +3,7 @@
   padding: 0 0;
 }
 
-body {  
+body {
   margin: 0px;
   height: 100vh;
   background-color: rgb(0, 37, 122);
@@ -114,12 +114,12 @@ main {
   transform: rotate(90deg);
 }
 #menu__toggle:checked ~ .menu__box {
-  left: 0 !important;
+  right: 0 !important;
 }
 .menu__btn {
   position: fixed;
   top: 20px;
-  left: 20px;
+  right: 20px;
   width: 26px;
   height: 26px;
   cursor: pointer;
@@ -148,7 +148,7 @@ main {
   display: block;
   position: fixed;
   top: 0;
-  left: -100%;
+  right: -100%;
   width: 300px;
   height: 100%;
   margin: 0;
