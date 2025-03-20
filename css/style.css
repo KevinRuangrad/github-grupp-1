@@ -83,6 +83,15 @@ body.dark-mode .content h2 {
   width: 100px;
 }
 
+body.dark-mode #cameraSelect {
+  background-color: #050a14;
+  border-color: #4a6bdb;
+}
+
+body.dark-mode #fetchPhotoButton {
+  background-color: #011150;
+}
+
 .nav-container {
   display: flex;
   align-items: center;
@@ -254,6 +263,31 @@ main {
   margin: 10px 30px;
   font-size: 20px;
   color: rgb(211, 221, 249);
+}
+
+#cameraSelect {
+  background-color: #0462fb;
+  color: white;
+  padding: 10px 15px;
+  border: 1px solid #2248c6;
+  border-radius: 6px;
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+
+#fetchPhotoButton {
+  background-color: #012bd2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 15px;
+  cursor: pointer;
+  font-weight: 400;
+}
+
+#fetchPhotoButton:hover {
+  background-color: #6b82db;
 }
 
 footer {
