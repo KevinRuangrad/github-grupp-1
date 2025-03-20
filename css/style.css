@@ -344,7 +344,6 @@ footer p {
 
 #displayContent img {
   height: 240px;
-  border: solid white;
 }
 
 #displayContent h1 {
@@ -353,8 +352,6 @@ footer p {
 
 #displayContent p {
   color: rgb(128, 162, 255);
-  text-wrap: balance;
-  font-size: 20px;
   max-width: 700px;
   margin: 20px;
 }
@@ -366,9 +363,8 @@ footer p {
 }
 
 #marsContent img {
-  height: 300px;
-  width: 500px;
-  border: solid white;
+  max-width: 350px;
+  margin: 10px;
 }
 
 #marsContent h1 {
@@ -379,6 +375,12 @@ footer p {
   color: white;
   text-wrap: balance;
   font-size: 20px;
+}
+
+#marsContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .about-container {
