@@ -355,6 +355,14 @@ footer p {
   color: rgb(128, 162, 255);
   text-wrap: balance;
   font-size: 20px;
+  max-width: 700px;
+  margin: 20px;
+}
+
+#displayContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #marsContent img {
