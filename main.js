@@ -1,18 +1,16 @@
 const API_KEY = "iKbRioFV3EYa1DJzIrKhPIDLL7SmPSXmMEierTgK";
-const APOD_API_URL = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`;
-const MARS_API_URL = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?api_key=${API_KEY}`;
+const BASE_NASA_URL = "https://api.nasa.gov";
 
 async function fetchWithRetry(url, retries = 3, delay = 1000) {
   for (let i = 0; i < retries; i++) {
     try {
       const response = await fetch(url);
-      if (!response.ok) {
+      if (!response.ok)
         throw new Error(`HTTP error! status: ${response.status}`);
-      }
       return await response.json();
     } catch (error) {
       if (i < retries - 1) {
-        console.warn(`Retrying... (${i + 1})`);
+        console.warn(`Retrying (${i + 1}/${retries})...`);
         await new Promise((resolve) => setTimeout(resolve, delay));
       } else {
         throw error;
@@ -21,141 +19,113 @@ async function fetchWithRetry(url, retries = 3, delay = 1000) {
   }
 }
 
-async function fetchNasaData() {
+async function fetchNasaData(endpoint, params = {}) {
+  const urlParams = new URLSearchParams({
+    api_key: API_KEY,
+    ...params,
+  });
+  const url = `${BASE_NASA_URL}${endpoint}?${urlParams}`;
+  return await fetchWithRetry(url);
+}
+
+// APOD fetching and displaying
+async function loadAPOD() {
   try {
-    const data = await fetchWithRetry(APOD_API_URL);
+    const data = await fetchNasaData("/planetary/apod");
     displayAPODData(data);
   } catch (error) {
-    console.error("Error fetching data from NASA API:", error);
+    console.error("Error fetching APOD:", error);
   }
 }
 
-
-// Theme toggle functionality
-const themeToggle = document.getElementById('theme-toggle');
-const body = document.body;
-
-// Check for saved theme preference
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme === 'dark') {
-  body.classList.add('dark-mode');
-  themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+function displayAPODData({ title, url, explanation }) {
+  const apodContainer = document.getElementById("displayContent");
+  apodContainer.innerHTML = `
+    <h1>${title}</h1>
+    <img src="${url}" alt="${title}">
+    <p>${explanation}</p>
+  `;
 }
 
-themeToggle.addEventListener('click', () => {
-  body.classList.toggle('dark-mode');
-  
-  if (body.classList.contains('dark-mode')) {
-    localStorage.setItem('theme', 'dark');
-    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-  } else {
-    localStorage.setItem('theme', 'light');
-    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-  }
-});
-
-
-
-function displayAPODData(data) {
-  const apodContainer = document.querySelector("#displayContent");
-
-  const title = document.createElement("h1");
-  title.textContent = data.title;
-
-  const image = document.createElement("img");
-  image.src = data.url;
-  image.alt = data.title;
-
-  const description = document.createElement("p");
-  description.textContent = data.explanation;
-
-  apodContainer.appendChild(title);
-  apodContainer.appendChild(image);
-  apodContainer.appendChild(description);
-}
-
-async function fetchMarsData(camera) {
-  try {
-    const today = new Date().toISOString().split("T")[0];
-    let url = `${MARS_API_URL}&earth_date=${today}`;
-    if (camera) {
-      url += `&camera=${camera}`;   
-    }
-    const data = await fetchWithRetry(url);
-    displayMarsData(data.photos, fetchRandomPhotos);
-  } catch (error) {
-    console.error("Error fetching data from NASA API:", error);
-  }
-}
-
-function displayMarsData(photos, fetchRandomPhotos) {
-  const marsContainer = document.querySelector("#marsContent");
-  marsContainer.innerHTML = ""; // Clear previous content
-
-  if (photos.length === 0) {
-    const noPhotosMessage = document.createElement("p");
-    noPhotosMessage.textContent = "No photos available for this date.";
-    marsContainer.appendChild(noPhotosMessage);
-
-    // Fetch random photos if no photos available for the selected date
-    fetchRandomPhotos();
-    return;
-  }
-
-  photos.slice(0, 3).forEach((photo) => {
-    const img = document.createElement("img");
-    img.src = photo.img_src;
-    img.alt = `Mars Rover Photo taken by ${photo.rover.name} on ${photo.earth_date}`;
-    marsContainer.appendChild(img);
-  });
-}
-
-// Example usage of displayMarsData with a fallback function
-function fetchRandomPhotos() {
-  // Logic to fetch photos from random dates
-  const randomDate = getRandomDate();
-  console.log(`Fetching random photos for date: ${randomDate}`);
-  fetchMarsPhotos(randomDate).then((randomPhotos) => {
-    displayMarsData(randomPhotos, fetchRandomPhotos);
-  });
-}
-
-function getRandomDate() {
-  const start = new Date(2012, 7, 6); // Curiosity rover landing date
-  const end = new Date();
-  const randomDate = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
-  return randomDate.toISOString().split('T')[0];
-}
-
-function fetchMarsPhotos(date) {
-  const apiKey = 'DEMO_KEY'; // Replace with your NASA API key
-  const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${date}&api_key=${apiKey}`;
-  console.log(`Fetching Mars photos for date: ${date}`);
-  return fetch(url)
-    .then(response => response.json())
-    .then(data => data.photos);
-}
-
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   // Fetch and display the APOD when the page loads
-  fetchNasaData();
+  await loadAPOD();
+
+  // Mars Rover photos fetching and displaying
+  async function loadMarsPhotos(
+    camera = null,
+    date = new Date().toISOString().split("T")[0]
+  ) {
+    try {
+      const params = { earth_date: date, page: 1 };
+      if (camera) params.camera = camera;
+
+      const { photos } = await fetchNasaData(
+        "/mars-photos/api/v1/rovers/curiosity/photos",
+        params
+      );
+      if (photos.length) {
+        displayMarsPhotos(photos.slice(0, 3));
+      } else {
+        console.warn("No photos available, fetching random photos instead.");
+        fetchRandomMarsPhotos();
+      }
+    } catch (error) {
+      console.error("Error fetching Mars photos:", error);
+    }
+  }
+
+  function displayMarsPhotos(photos) {
+    const marsContainer = document.getElementById("marsContent");
+    marsContainer.innerHTML = photos
+      .map(
+        (photo) => `
+    <img src="${photo.img_src}" alt="Mars Rover Photo by ${photo.rover.name} on ${photo.earth_date}">
+  `
+      )
+      .join("");
+  }
+
+  // Fallback logic for random Mars photos
+  async function fetchRandomMarsPhotos() {
+    const randomDate = getRandomDate();
+    console.log(`Fetching random photos for date: ${randomDate}`);
+    await loadMarsPhotos(null, randomDate);
+  }
+
+  function getRandomDate() {
+    const start = new Date(2012, 7, 6).getTime();
+    const end = Date.now();
+    const randomTime = start + Math.random() * (end - start);
+    return new Date(randomTime).toISOString().split("T")[0];
+  }
 
   // Add event listener for fetching Mars Rover Photos based on camera
-  document.getElementById("fetchPhotoButton").addEventListener("click", () => {
-    const camera = document.getElementById("cameraSelect").value;
-    fetchMarsData(camera);
-  });
+  document
+    .getElementById("fetchPhotoButton")
+    .addEventListener("click", async () => {
+      const camera = document.getElementById("cameraSelect").value;
+      await loadMarsPhotos(camera);
+    });
 });
 
-document.querySelector("#fetchPhotoButton").addEventListener("click", () => {
-  console.log("Fetch Photo Button clicked");
-  fetchMarsPhotosForSelectedDate();
-});
+// Theme toggle
+const themeToggle = document.getElementById("theme-toggle");
+const body = document.body;
 
-function fetchMarsPhotosForSelectedDate() {
-  const selectedDate = document.querySelector("#dateInput").value;
-  console.log(`Fetching Mars photos for selected date: ${selectedDate}`);
-  fetchMarsPhotos(selectedDate).then((photos) => {
-    displayMarsData(photos, fetchRandomPhotos);
-  });
+function applyTheme(theme) {
+  body.classList.toggle("dark-mode", theme === "dark");
+  themeToggle.innerHTML =
+    theme === "dark"
+      ? '<i class="fas fa-sun"></i>'
+      : '<i class="fas fa-moon"></i>';
 }
+
+const savedTheme = localStorage.getItem("theme") || "light";
+applyTheme(savedTheme);
+
+themeToggle.addEventListener("click", () => {
+  const theme = body.classList.toggle("dark-mode") ? "dark" : "light";
+  localStorage.setItem("theme", theme);
+  applyTheme(theme);
+});
