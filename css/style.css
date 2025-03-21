@@ -136,6 +136,10 @@ body.light-mode .fas.fa-moon {
   color: black;
 }
 
+body light-mode #cameraSelect {
+  color: #0000ff
+}
+
 .logo-container img {
   width: 100px;
 }
