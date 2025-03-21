@@ -326,21 +326,7 @@ footer p {
   color: #ccc;
   margin: 0;
 }
-@media screen and (min-width: 480px) {
-  .nav-container {
-    display: block;
-  }
 
-  .hamburger-menu {
-    display: none;
-  }
-  .content h2 {
-    font-size: 30px;
-  }
-  header h1 {
-    font-size: 25px;
-  }
-}
 
 #displayContent img {
   height: 240px;
@@ -386,8 +372,6 @@ footer p {
 .about-container {
   background: url("../images/Blue\ and\ Black\ Neon\ Bold\ Gradient\ Modern\ Galaxy\ Playful\ Illustrative\ Universe\ Project\ Presentation\ \(1\).jpg")
     no-repeat center center;
-  background: url("../images/Blue\ and\ Black\ Neon\ Bold\ Gradient\ Modern\ Galaxy\ Playful\ Illustrative\ Universe\ Project\ Presentation\ \(1\).jpg")
-    no-repeat center center; 
   background-size: cover;
   height: 100vh;
   display: flex;
@@ -475,4 +459,35 @@ footer p {
   max-width: 80%;
   margin: auto;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+@media screen and (min-width: 480px) {
+  .nav-container {
+    display: block;
+  }
+
+  .hamburger-menu {
+    display: none;
+  }
+  .content h2 {
+    font-size: 30px;
+  }
+  header h1 {
+    font-size: 25px;
+  }
+  .about-container {
+    background: url("../images/Blue\ and\ Black\ Neon\ Bold\ Gradient\ Modern\ Galaxy\ Playful\ Illustrative\ Universe\ Project\ Presentation\ \(1\).jpg")
+      no-repeat center center;
+    background: url("../images/Blue\ and\ Black\ Neon\ Bold\ Gradient\ Modern\ Galaxy\ Playful\ Illustrative\ Universe\ Project\ Presentation\ \(1\).jpg")
+      no-repeat center center; 
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+  }
 }
