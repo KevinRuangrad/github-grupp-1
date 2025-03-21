@@ -137,7 +137,11 @@ body.light-mode .fas.fa-moon {
   color: black;
 }
 
-body light-mode #cameraSelect {
+body.light-mode #cameraSelect {
+  color: #0000ff;
+}
+
+body.light-mode #displayContent p {
   color: #0000ff;
 }
 
@@ -211,19 +215,8 @@ main {
   justify-content: space-between;
 }
 
-#link-container {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-top: 50px;
-  color: rgb(128, 162, 255);
-}
-
-#link-container a {
-  color: rgb(186, 203, 249);
-  text-decoration: none;
-  margin: 0 10px;
-  font-size: 20px;
+#contact-container {
+  color: rgb(171, 183, 255);
 }
 
 .content {
@@ -389,7 +382,7 @@ footer p {
 }
 
 #displayContent p {
-  color: rgb(2, 45, 162);
+  color: rgb(190, 207, 252);
   max-width: 700px;
   margin: 20px;
 }
