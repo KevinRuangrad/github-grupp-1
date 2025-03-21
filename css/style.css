@@ -403,7 +403,8 @@ footer p {
   background: url("../images/Blue\ and\ Black\ Neon\ Bold\ Gradient\ Modern\ Galaxy\ Playful\ Illustrative\ Universe\ Project\ Presentation\ \(1\).jpg")
     no-repeat center center;
   background-size: cover;
-  height: 100vh;
+  max-width: 400px;
+  height: 85vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -414,8 +415,7 @@ footer p {
 }
 .about-text {
   font-family: "Arial", sans-serif;
-  font-family: "Arial", sans-serif;
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: bold;
   text-transform: uppercase;
   text-shadow: 0 0 20px rgba(255, 255, 255, 1),
@@ -430,6 +430,7 @@ footer p {
 .mission-container {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   gap: 20px;
   padding: 40px;
@@ -472,23 +473,22 @@ footer p {
   background-image: url("../images/del3.jpg"); /* Tredje sektionen */
 }
 
-.mission-content {
-  position: relative;
-  z-index: 1;
-}
-
 .mission-title {
   font-size: 1.5rem;
   font-weight: bold;
   text-transform: uppercase;
   text-shadow: 0 0 10px rgba(255, 255, 255, 1);
+  padding: 15px;
 }
 
 .mission-text {
+  display: flex;
   font-size: 1rem;
   max-width: 80%;
-  margin: auto;
+  margin: 35px;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  text-align: center;
+  align-items: center;
 }
 
 @media screen and (min-width: 480px) {
@@ -506,18 +506,38 @@ footer p {
     font-size: 25px;
   }
   .about-container {
-    background: url("../images/Blue\ and\ Black\ Neon\ Bold\ Gradient\ Modern\ Galaxy\ Playful\ Illustrative\ Universe\ Project\ Presentation\ \(1\).jpg")
-      no-repeat center center;
-    background: url("../images/Blue\ and\ Black\ Neon\ Bold\ Gradient\ Modern\ Galaxy\ Playful\ Illustrative\ Universe\ Project\ Presentation\ \(1\).jpg")
-      no-repeat center center; 
-    background-size: cover;
-    height: 100vh;
+    max-width: 800px;
+  }
+  .mission-container {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 40px;
+  }
+  .about-text {
+    font-size: 4rem;
+    
+  }
+  .mission-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 40px;
+  }
+  .mission-item {
+    flex: 1;
+    height: 500px;
+    display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     color: white;
-    padding: 20px;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
   }
 }
