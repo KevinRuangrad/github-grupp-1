@@ -145,6 +145,10 @@ body.light-mode #displayContent p {
   color: #0000ff;
 }
 
+body.light-mode #contact-container {
+  color: rgb(1, 21, 135);
+}
+
 .logo-container img {
   width: 100px;
 }
