@@ -385,11 +385,11 @@ footer p {
 
 .about-container {
   background: url("../images/Blue\ and\ Black\ Neon\ Bold\ Gradient\ Modern\ Galaxy\ Playful\ Illustrative\ Universe\ Project\ Presentation\ \(1\).jpg")
-    no-repeat center center; /* Lägg in rätt bildnamn */
+    no-repeat center center;
   background: url("../images/Blue\ and\ Black\ Neon\ Bold\ Gradient\ Modern\ Galaxy\ Playful\ Illustrative\ Universe\ Project\ Presentation\ \(1\).jpg")
-    no-repeat center center; /* Lägg in rätt bildnamn */
-  background-size: cover; /* Ser till att bilden fyller hela sektionen */
-  height: 100vh; /* Justera beroende på hur stor sektionen ska vara */
+    no-repeat center center; 
+  background-size: cover;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -399,8 +399,8 @@ footer p {
   padding: 20px;
 }
 .about-text {
-  font-family: "Arial", sans-serif; /* Du kan testa 'Montserrat' eller 'Poppins' också */
-  font-family: "Arial", sans-serif; /* Du kan testa 'Montserrat' eller 'Poppins' också */
+  font-family: "Arial", sans-serif;
+  font-family: "Arial", sans-serif;
   font-size: 4rem;
   font-weight: bold;
   text-transform: uppercase;
@@ -417,13 +417,13 @@ footer p {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px; /* Mellanrum mellan sektionerna */
+  gap: 20px;
   padding: 40px;
 }
 
 .mission-item {
-  flex: 1; /* Lika stora sektioner */
-  height: 300px; /* Höjden på varje sektion */
+  flex: 1;
+  height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
