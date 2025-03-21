@@ -50,6 +50,74 @@ header h1 {
   transform: scale(1.1);
 }
 
+/* Light mode styles */
+body.light-mode {
+  background-color: #ffffff;
+}
+
+body.light-mode header {
+  background: #f0f0f0;
+}
+
+body.light-mode footer {
+  background: #f0f0f0;
+}
+
+body.light-mode #main-container {
+  background-color: #ffffff;
+}
+
+body.light-mode #link-container a {
+  color: #0000ff;
+}
+
+body.light-mode #link-container p {
+  color: #0000ff;
+}
+
+body.light-mode .content h2 {
+  color: #0000ff;
+}
+
+body.light-mode #cameraSelect {
+  background-color: #e0e0e0;
+  border-color: #0000ff;
+}
+
+body.light-mode #fetchPhotoButton {
+  background-color: #0000ff;
+}
+
+body.light-mode nav ul li a {
+  color: #0000ff;
+}
+
+body.light-mode nav ul li a:hover {
+  color: #00bfff; /* Light blue */
+  text-shadow: 0 0 10px rgba(0, 191, 255, 0.5); /* Light blue shadow */
+}
+
+body.light-mode nav ul li a::after {
+  background: #00bfff; /* Light blue */
+}
+
+body.light-mode footer {
+  background: #f0f0f0;
+  color: #000000;
+}
+
+body.light-mode footer p {
+  color: #000000;
+}
+
+body.light-mode .social-links a {
+  color: #0000ff;
+}
+
+body.light-mode .social-links a:hover {
+  color: #00bfff; /* Light blue */
+}
+
 /* Dark mode styles */
 body.dark-mode {
   background-color: #0a0a0a;
@@ -90,6 +158,36 @@ body.dark-mode #cameraSelect {
 
 body.dark-mode #fetchPhotoButton {
   background-color: #011150;
+}
+
+body.dark-mode nav ul li a {
+  color: #8a9fff;
+}
+
+body.dark-mode nav ul li a:hover {
+  color: #cffffd;
+  text-shadow: 0 0 10px rgba(207, 253, 253, 0.5);
+}
+
+body.dark-mode nav ul li a::after {
+  background: #cffffd;
+}
+
+body.dark-mode footer {
+  background: #1a1a1a;
+  color: #ccc;
+}
+
+body.dark-mode footer p {
+  color: #999;
+}
+
+body.dark-mode .social-links a {
+  color: #8a9fff;
+}
+
+body.dark-mode .social-links a:hover {
+  color: #cffffd;
 }
 
 .nav-container {
@@ -387,7 +485,7 @@ footer p {
   background: url("../images/Blue\ and\ Black\ Neon\ Bold\ Gradient\ Modern\ Galaxy\ Playful\ Illustrative\ Universe\ Project\ Presentation\ \(1\).jpg")
     no-repeat center center;
   background: url("../images/Blue\ and\ Black\ Neon\ Bold\ Gradient\ Modern\ Galaxy\ Playful\ Illustrative\ Universe\ Project\ Presentation\ \(1\).jpg")
-    no-repeat center center; 
+    no-repeat center center;
   background-size: cover;
   height: 100vh;
   display: flex;

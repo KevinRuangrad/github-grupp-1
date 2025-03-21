@@ -114,11 +114,11 @@ const themeToggle = document.getElementById("theme-toggle");
 const body = document.body;
 
 function applyTheme(theme) {
-  body.classList.toggle("dark-mode", theme === "dark");
+  body.classList.toggle("light-mode", theme === "light");
   themeToggle.innerHTML =
-    theme === "dark"
-      ? '<i class="fas fa-sun"></i>'
-      : '<i class="fas fa-moon"></i>';
+    theme === "light"
+    ? '<i class="fas fa-moon"></i>' 
+    : '<i class="fas fa-sun"></i>';
 }
 
 const savedTheme = localStorage.getItem("theme") || "light";
