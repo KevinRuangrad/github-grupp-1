@@ -118,76 +118,8 @@ body.light-mode .social-links a:hover {
   color: #00bfff; /* Light blue */
 }
 
-/* Dark mode styles */
-body.dark-mode {
-  background-color: #0a0a0a;
-}
-
-body.dark-mode header {
-  background: #1a1a1a;
-}
-
-body.dark-mode footer {
-  background: #1a1a1a;
-}
-
-body.dark-mode #main-container {
-  background-color: #0a0a0a;
-}
-
-body.dark-mode #link-container a {
-  color: #8a9fff;
-}
-
-body.dark-mode #link-container p {
-  color: #6b7fff;
-}
-
-body.dark-mode .content h2 {
-  color: #8a9fff;
-}
-
 .logo-container img {
   width: 100px;
-}
-
-body.dark-mode #cameraSelect {
-  background-color: #050a14;
-  border-color: #4a6bdb;
-}
-
-body.dark-mode #fetchPhotoButton {
-  background-color: #011150;
-}
-
-body.dark-mode nav ul li a {
-  color: #8a9fff;
-}
-
-body.dark-mode nav ul li a:hover {
-  color: #cffffd;
-  text-shadow: 0 0 10px rgba(207, 253, 253, 0.5);
-}
-
-body.dark-mode nav ul li a::after {
-  background: #cffffd;
-}
-
-body.dark-mode footer {
-  background: #1a1a1a;
-  color: #ccc;
-}
-
-body.dark-mode footer p {
-  color: #999;
-}
-
-body.dark-mode .social-links a {
-  color: #8a9fff;
-}
-
-body.dark-mode .social-links a:hover {
-  color: #cffffd;
 }
 
 .nav-container {
