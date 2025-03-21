@@ -118,6 +118,28 @@ body.light-mode .social-links a:hover {
   color: #00bfff; /* Light blue */
 }
 
+body.light-mode .menu__btn > span,
+body.light-mode .menu__btn > span::before,
+body.light-mode .menu__btn > span::after {
+  background-color: #0000ff; /* Light blue */
+}
+
+body.light-mode .menu__box {
+  background-color: rgb(192, 192, 192);
+}
+
+body.light-mode .menu__box a{
+  color: #0000ff;
+}
+
+body.light-mode .fas.fa-moon {
+  color: black;
+}
+
+body light-mode #cameraSelect {
+  color: #0000ff
+}
+
 .logo-container img {
   width: 100px;
 }
