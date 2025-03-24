@@ -500,6 +500,11 @@ footer p {
   padding: 15px;
 }
 
+.mission-link{
+  color:rgba(255, 255, 255, 1);
+  text-decoration: none;
+}
+
 .mission-text {
   display: flex;
   font-size: 1rem;
