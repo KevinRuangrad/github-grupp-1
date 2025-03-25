@@ -13,7 +13,6 @@ Struktur
 
 Team
 * Kevin Ruangrad – Projektledare & API-integration
-* Rabia Mehboob – CSS-styling
 * Linn Ahlrot Sahlén – Frontend-utveckling & navigation
 * Ida Lindkvist - Frontend-utveckling & Struktur
 * Younes Rahomoussa – Frontend intergration & Struktur
